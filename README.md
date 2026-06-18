@@ -19,17 +19,17 @@ Asegúrate de tener instalado:
 
 ### 1. Clonar el repositorio y acceder al proyecto
 
-```bash
-git clone <URL_DEL_REPOSITORIO> && cd "GESTION DE POLIZAS"
+```Entrar al git bash
+git clone https://github.com/bryan0417/Gestion-Polizas && cd "Gestion-Polizas"
 ```
 
 ### 2. Levantar el backend (Spring Boot)
 
-```bash
+```Entrar al git bash
 cd policy-backend/policy && ./mvnw spring-boot:run
 ```
 
-El backend quedará disponible en `http://localhost:8080`.  
+El backend quedará disponible en `http://localhost:7070`.  
 La base de datos SQLite se crea automáticamente en el primer arranque con datos de prueba precargados.
 
 ### 3. Levantar el frontend (Angular)
@@ -47,11 +47,12 @@ La aplicación quedará disponible en `http://localhost:4200`.
 ## Estructura del proyecto
 
 ```
-GESTION DE POLIZAS/
+Gestion-Polizas/
 ├── policy-backend/
 │   └── policy/              # API REST - Spring Boot
 │       ├── src/
 │       ├── mvnw
+|       ├── polizas.db
 │       └── pom.xml
 └── policy-frontend/
     └── poliza-front/        # SPA - Angular
@@ -69,18 +70,19 @@ La configuración del backend se encuentra en `policy-backend/src/main/resources
 
 ### Backend
 - **Spring Boot + Spring Data JPA** para la capa de datos con repositorios limpios y mantenibles.
-- **SQLite** como base de datos embebida: sin instalación de motor externo, el archivo se crea en tiempo de ejecución y los datos de prueba se cargan automáticamente vía `data.sql`.
+- **SQLite** como base de datos embebida: sin instalación de motor externo, el archivo se crea en tiempo de ejecución y los datos de prueba se cargan automáticamente.
 - **Arquitectura en capas** (Controller → Service → Repository) para separar responsabilidades y facilitar el testing unitario.
 
 ### Frontend
-- **Angular standalone components** para reducir el boilerplate de módulos.
+- **Angular components** para manejar cada vista por componentes.
 - **Reactive Forms** para manejo de validaciones en los formularios de pólizas.
-- **HttpClient** con servicios inyectables para mantener la lógica de consumo de API fuera de los componentes.
 
 ---
 
 ## Reflexión
 
-El mayor reto fue definir el modelo de dominio antes de escribir código: qué atributos mínimos necesita una póliza para ser útil sin sobre-diseñar. Opté por empezar con los casos de uso del enunciado y no agregar campos extra.
+El mayor reto fue definir el modelo de dominio antes de escribir código: que atributos y que tablas se iban a crear, me apoye con un agente creado con git hub copilots, y en el proceso de desarrollo hubo atributos que se eliminaron. Fue la primera vez que utilizaba SQLite pero es super facil, no se requiere de instalacion de servidor, es ligero y raapido, y utilice una extension en VS code para ver la base de datos.
 
-Si tuviera más tiempo, añadiría paginación en el listado de pólizas, manejo de errores más granular en el frontend y un pipeline de CI básico con GitHub Actions.
+Si tuviera más tiempo, añadiría paginación en el listado de pólizas, manejo de errores más granular en el frontend y busquedas o consultas mas avanzadas como filtros, una complejidad es que al no tener como un  listado de requerimientos casi que uno es entender el problema y plantear una solucion que pueda ayudar al problema.
+
+En la sección de pruebas se realizaron pruebas funcionales de los endpoints utilizando Postman, verificando el correcto funcionamiento de las operaciones implementadas y las respuestas del sistema ante diferentes solicitudes. No se llevaron a cabo otros tipos de pruebas, como pruebas unitarias, de integración o automatizadas, debido a la falta de experiencia y conocimientos suficientes en dichas metodologías al momento del desarrollo del proyecto.

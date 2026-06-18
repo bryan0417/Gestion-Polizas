@@ -81,3 +81,7 @@ La pérdida de contexto es uno de los principales problemas identificados en el 
 ## Utilizar una base de datos en lugar de Excel
 
 La necesidad de evitar pérdidas de información y mejorar el seguimiento de las pólizas hace que una base de datos sea más adecuada.
+
+## Se realizan validaciones basicas
+
+Al envio de forms como clientes o polizas se realizaron validaciones basicas en el momento de enviar los forms
