@@ -1,0 +1,14 @@
+nav {
+    width: 100%;
+    background-color: white;
+    padding: 10px 0;
+}
+
+body.nuevaClinica {
+    background-color: #78BE20;
+    height: 100vh;
+}
+
+form {
+    padding:30px;
+}

@@ -1,0 +1,40 @@
+<div
+     style="padding: 1rem; background-color: #004d00; color: white; border: 1px solid black; border-left: none; display: flex; text-align: center;">
+    <button class="btn btn-verde btn-sm text-white" style="border: 1px solid white !important;" routerLink="/"><b>Volver</b></button>
+    <h2 style="margin: 0; flex: 1; text-align: center;"><b>Lista de Polizas</b></h2>
+</div>
+
+<body class="nuevaClinica">
+    <form>
+        <table class="table table-light table-striped mx-auto mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Número Poliza</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Aseguradora</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Vencimiento</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Cliente</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="polizas.length > 0">
+                <tr *ngFor="let poliza of polizas; let idx = index">
+                    <th scope="row">{{idx + 1}}</th>
+                    <td>{{poliza.numeroPoliza}}</td>
+                    <td>{{poliza.tipo}}</td>
+                    <td>{{poliza.aseguradora}}</td>
+                    <td>{{poliza.fechaInicio}}</td>
+                    <td>{{poliza.fechaVencimiento}}</td>
+                    <td>{{poliza.estado}}</td>
+                    <td>{{poliza.cliente.nombre}}</td>
+                </tr>
+
+            </tbody>
+            <tr *ngIf="polizas.length === 0 || polizas == null">
+                <td colspan="8" class="text-center">No hay Polizas disponibles</td>
+            </tr>
+        </table>
+    </form>
+</body>

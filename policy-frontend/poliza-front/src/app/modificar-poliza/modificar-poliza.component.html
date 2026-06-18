@@ -1,0 +1,61 @@
+<header class="header-verde text-white text-center py-3">
+    <h1><b>Actualizar Poliza</b></h1>
+</header>
+<body>
+    <form class="row g-3" [formGroup]="polizaData" (submit)="actualizarPoliza()">
+        <input type="hidden" formControlName="id" name="id" class="form-control">
+        <div class="col-6">
+            <label for="txtNumeroPoliza" class="form-label">Numero Poliza</label>
+            <input id="txtNumeroPoliza" formControlName="numeroPoliza" name="numeroPoliza" class="form-control" readonly>
+        </div>
+        <div class="col-6">
+            <label for="txtTipo" class="form-label">Tipo</label>
+            <input id="txtTipo" formControlName="tipo" name="tipo" class="form-control" readonly>
+        </div>
+        <div class="col-6">
+            <label for="txtAseguradora" class="form-label">Aseguradora</label>
+            <input id="txtAseguradora" formControlName="aseguradora" name="aseguradora" class="form-control" readonly>
+        </div>
+        <div class="col-md-6">
+            <label for="txtEstado" class="form-label">Estado</label>
+            <select class="form-select" id="txtEstado" formControlName="estado" name="estado">
+                <option selected value="">Seleccione...</option>
+                <option value="Vigente">Vigente</option>
+                <option value="Expirada">Expirada</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputTipoGestion" class="form-label">Tipo Gestion</label>
+            <select class="form-select" id="inputTipoGestion" [(ngModel)]="tipoGestion" [ngModelOptions]="{standalone: true}" name="tipoGestion">
+                <option selected value="">Seleccione...</option>
+                <option value="Llamada telefónica">Llamada telefónica</option>
+                <option value="Correo electrónico">Correo electrónico</option>
+                <option value="Mesaje">Mensaje</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputResultado" class="form-label">Resultado</label>
+            <select class="form-select" id="inputResultado" [(ngModel)]="resultado" [ngModelOptions]="{standalone: true}" name="resultado">
+                <option selected value="">Seleccione...</option>
+                <option value="Renovación">Poliza renovada</option>
+                <option value="Pendiente de respuesta">Pendiente de respuesta</option>
+                <option value="Poliza cancelada">Poliza cancelada</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="txtFechaInicio" class="form-label">Fecha Inicio</label>
+            <input id="txtFechaInicio" formControlName="fechaInicio" name="fechaInicio" class="form-control" type="date" />
+        </div>
+        <div class="col-md-6">
+            <label for="txtFechaVencimiento" class="form-label">Fecha Vencimiento</label>
+            <input id="txtFechaVencimiento" formControlName="fechaVencimiento" name="fechaVencimiento" class="form-control" type="date" />
+        </div>
+        <div class="col-12" style="display: flex; justify-content: flex-start; gap: 10px;">
+            <button type="submit" class="btn btn-costume">Actualizar</button>
+            <button type="button" class="btn btn-danger" (click)="volver()">Cancelar</button>
+        </div>
+    </form>
+
+
+</body>
+

@@ -1,0 +1,81 @@
+<header class="header-verde text-white text-center py-3">
+    <h1><b>Gestión de Polizas</b></h1>
+    <p>Portal de clientes y polizas</p>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Cliente
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="/nuevo-cliente" routerLinkActive="active" ariaCurrentWhenActive="page"
+                                class="dropdown-item">Nuevo</a></li>
+                        <li><a routerLink="/modificar-cliente" routerLinkActive="active" ariaCurrentWhenActive="page" 
+                                class="dropdown-item">Modificar</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Poliza
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="/nueva-poliza" routerLinkActive="active" ariaCurrentWhenActive="page"
+                                class="dropdown-item" href="">Nueva</a></li>
+                        <li><a routerLink="/listar-polizas" routerLinkActive="active" ariaCurrentWhenActive="page"
+                                class="dropdown-item" href="">Listar Polizas</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section id="clientes" class="container mt-5">
+    <form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Documento</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Fecha Creación</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @if (clientes.length > 0) {
+                    @for (cliente of clientes; track cliente.id; let idx = $index) {
+                        <tr>
+                            <th scope="row">{{ idx + 1 }}</th>
+                            <td>{{ cliente.nombre }}</td>
+                            <td>{{ cliente.documento }}</td>
+                            <td>{{ cliente.celular }}</td>
+                            <td>{{ cliente.correo }}</td>
+                            <td>{{ cliente.fechaCreacion }}</td>
+                            <td>
+                                <button class="btn btn-verde btn-sm text-white" (click)="verPolizas(cliente.id)">Polizas</button>
+                            </td>
+                        </tr>
+                    }
+                } @else {
+                <tr>
+                    <td colspan="6" class="text-center">No hay clientes disponibles</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</section>
+
+

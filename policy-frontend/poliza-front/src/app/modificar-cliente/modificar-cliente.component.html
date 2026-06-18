@@ -1,0 +1,54 @@
+<header class="header-verde text-white text-center py-3">
+    <h1><b>Actualizar Cliente</b></h1>
+</header>
+<body>
+    <form [formGroup]="clienteForm" (submit)="cargarCliente()">
+        <div class="container d-flex justify-content-center">
+            <div class="form-floating col-md-8 d-flex">
+                <select class="form-select" formControlName="id" name="id" id="id">
+                    <option selected disabled value="">Seleccione...</option>
+                    <option [value]="cliente.id" *ngFor="let cliente of clientes">
+                        {{cliente.nombre}}
+                    </option>
+                </select>
+                <label>Selecciona un cliente</label>
+                <button type="submit" class="btn btn-primary ms-2">Seleccionar</button>
+            </div>
+        </div>
+        <div class="alert alert-danger d-flex mx-auto mt-1" style="width: 100%; max-width: 200px;" *ngIf="clienteForm.get('id')?.invalid && clienteForm.get('id')?.touched">
+            El campo es obligatorio
+        </div>
+    </form>
+
+
+    <form class="row g-3" [formGroup]="clienteData" (submit)="actualizarCliente()">
+        <input type="hidden" formControlName="id" name="id" class="form-control">
+        <div class="col-12">
+            <label for="txtnombre" class="form-label">Nombre</label>
+            <input id="txtnombre" formControlName="nombre" name="nombre" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="txtdocumento" class="form-label">Documento</label>
+            <input id="txtdocumento" formControlName="documento" name="documento" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="txtcelular" class="form-label">Celular</label>
+            <input id="txtcelular" formControlName="celular" name="celular" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <label for="txtcorreo" class="form-label">Correo</label>
+            <input id="txtcorreo" formControlName="correo" name="correo" class="form-control" type="email" html5="true">
+        </div>
+        <div class="col-md-6">
+            <label for="txtfecha" class="form-label">Fecha de Creación</label>
+            <input id="txtfecha" formControlName="fechaCreacion" name="fechaCreacion" class="form-control" type="date"
+                html5="true">
+        </div>
+        <div class="col-12" style="display: flex; justify-content: flex-start; gap: 10px;">
+            <button type="submit" class="btn btn-costume">Actualizar</button>
+            <button type="button" class="btn btn-danger" routerLink="/">Cancelar</button>
+        </div>
+    </form>
+
+
+</body>

@@ -1,0 +1,80 @@
+<header class="header-verde text-white text-center py-3">
+    <h1><b>Crear una nueva poliza</b></h1>
+</header>
+<body>
+    <form [formGroup]="clienteForm">
+        <div class="container d-flex justify-content-center">
+            <div class="form-floating col-md-8 d-flex">
+                <select class="form-select" formControlName="cliente">
+                    <option selected disabled value="">Seleccione...</option>
+                    <option [ngValue]="cliente" *ngFor="let cliente of clientes">
+                        {{cliente.nombre}}
+                    </option>
+                </select>
+                <label>Selecciona un cliente</label>
+            </div>
+        </div>
+        <div class="alert alert-danger d-flex mx-auto mt-1" style="width: 100%; max-width: 200px;" *ngIf="clienteForm.get('cliente')?.invalid && clienteForm.get('cliente')?.touched">
+            El campo es obligatorio
+        </div>
+    </form>
+    <form class="row g-3" [formGroup]="nuevaPolizaForm" (submit)="guardarPoliza()">
+        <div class="col-md-6">
+            <label for="inputNumeroPoliza" class="form-label">Numero Poliza</label>
+            <input id="inputNumeroPoliza" formControlName="numeroPoliza" name="numeroPoliza" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label for="inputTipo" class="form-label">Tipo</label>
+            <select class="form-select" id="inputTipo" formControlName="tipo" name="tipo">
+                <option selected value="">Seleccione...</option>
+                <option value="Auto">Auto</option>
+                <option value="Hogar">Hogar</option>
+                <option value="Vida">Vida</option>
+                <option value="Salud">Salud</option>
+                <option value="Empresarial">Empresarial</option>
+                <option value="Accidentes Personales">Accidentes Personales</option>
+                <option value="Viajes">Viajes</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputAseguradora" class="form-label">Aseguradora</label>
+            <select class="form-select" id="inputAseguradora" formControlName="aseguradora" name="aseguradora">
+                <option selected value="">Seleccione...</option>
+                <option value="SURA">SURA</option>
+                <option value="Seguros Bolivar">Seguros Bolivar</option>
+                <option value="Allianz">Allianz</option>
+                <option value="Mapfre">Mapfre</option>
+                <option value="AXA Colpatria">AXA Colpatria</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputEstado" class="form-label">Estado</label>
+            <select class="form-select" id="inputEstado" formControlName="estado" name="estado">
+                <option selected value="">Seleccione...</option>
+                <option value="Vigente">Vigente</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputTipoGestion" class="form-label">Tipo Gestion</label>
+            <select class="form-select" id="inputTipoGestion" [(ngModel)]="tipoGestion" [ngModelOptions]="{standalone: true}" name="tipoGestion">
+                <option selected value="">Seleccione...</option>
+                <option value="Llamada telefónica">Llamada telefónica</option>
+                <option value="Correo electrónico">Correo electrónico</option>
+                <option value="Mesaje">Mensaje</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputInicio" class="form-label">Fecha Inicio</label>
+            <input id="inputInicio" formControlName="fechaInicio" name="fechaInicio" class="form-control" type="date" />
+        </div>
+        <div class="col-md-6">
+            <label for="inputVencimiento" class="form-label">Fecha Vencimiento</label>
+            <input id="inputVencimiento" formControlName="fechaVencimiento" name="fechaVencimiento" class="form-control" type="date" />
+        </div>
+        <div class="col-12" style="display: flex; justify-content: flex-start; gap: 10px;">
+            <button type="submit" class="btn btn-costume">Agregar</button>
+            <button type="button" class="btn btn-danger" routerLink="/">Cancelar</button>
+        </div>
+    </form>
+</body>
+

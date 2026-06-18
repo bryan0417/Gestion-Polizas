@@ -1,0 +1,38 @@
+<div
+     style="padding: 1rem; background-color: #004d00; color: white; border: 1px solid black; border-left: none; display: flex; text-align: center;">
+    <button class="btn btn-verde btn-sm text-white" style="border: 1px solid white !important;" (click)="volver()"><b>Volver</b></button>
+    <h2 style="margin: 0; flex: 1; text-align: center;"><b>Historial</b></h2>
+</div>
+
+<body class="nuevaClinica">
+    <form>
+        <table class="table table-light table-striped mx-auto mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha Gestion</th>
+                    <th scope="col">Tipo Gestion</th>
+                    <th scope="col">Resultado</th>
+                    <th scope="col">Número Poliza</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha Próxima Acción</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="gestiones.length > 0">
+                <tr *ngFor="let gestion of gestiones; let idx = index">
+                    <th scope="row">{{idx + 1}}</th>
+                    <td>{{gestion.fechaGestion}}</td>
+                    <td>{{gestion.tipoGestion}}</td>
+                    <td>{{gestion.resultado}}</td>
+                    <td>{{gestion.poliza.numeroPoliza}}</td>
+                    <td>{{gestion.poliza.estado}}</td>
+                    <td>{{gestion.fechaProximaAccion}}</td>
+                </tr>
+
+            </tbody>
+            <tr *ngIf="gestiones.length === 0 || gestiones == null">
+                <td colspan="8" class="text-center">No hay Polizas</td>
+            </tr>
+        </table>
+    </form>
+</body>
